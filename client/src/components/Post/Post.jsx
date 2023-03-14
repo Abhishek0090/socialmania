@@ -11,9 +11,16 @@ const Post = ({data}) => {
             <img src={data.img} alt='postimage'/>
 
             <div className='postReact'>
-                <img src={data.postPic1} alt='post1'/>
-                <img src={data.postPic2} alt='post2'/>
-                <img src={data.postPic3} alt='post3'/>
+                <img src={data.likes?Heart:NotLike} alt='post1'/>
+                <img src={Comment} alt='comment'/>
+                <img src={Share} alt='share'/>
+            </div>
+
+            <span>{data.likes} likes</span>
+
+            <div className='detail'>
+                <span><b>{data.name}</b></span>
+                <span>{data.desc}</span>
             </div>
         </div>
     )
