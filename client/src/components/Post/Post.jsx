@@ -5,18 +5,18 @@ import Share from "../../img/share.png";
 import Heart from "../../img/like.png";
 import NotLike from "../../img/notlike.png";
 
-const Post = ({data}) => {
+const Post = ({ data }) => {
     return (
         <div className='Post'>
-            <img src={data.img} alt='postimage'/>
+            <img src={data.img} alt='postimage' />
 
             <div className='postReact'>
-                <img src={data.likes?Heart:NotLike} alt='post1'/>
-                <img src={Comment} alt='comment'/>
-                <img src={Share} alt='share'/>
+                <img src={data.likes ? Heart : NotLike} alt='post1' />
+                <img src={Comment} alt='comment' />
+                <img src={Share} alt='share' />
             </div>
 
-            <span>{data.likes} likes</span>
+            <span style={{ color: "var(--gray)", fontSize: '12px' }}>{data.likes} likes</span>
 
             <div className='detail'>
                 <span><b>{data.name}</b></span>
