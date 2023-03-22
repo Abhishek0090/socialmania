@@ -4,8 +4,8 @@ import img3 from "../img/img3.png";
 import img4 from "../img/img4.jpg";
 
 export const Followers = [
-  { name: "Andrew Thomas", username: "AndrewThomas", img: img1 },
-  { name: "Hulk Buster", username: "HulkBuster", img: img2 },
-  { name: "Thor", username: "ThunderMaster", img: img3 },
-  { name: "Natasha", username: "Natasha", img: img4 },
+  { name: "Senior Developer", username: "sde2", img: img1 },
+  { name: "Clpud Engineer", username: "ce", img: img2 },
+  { name: "Software Tester", username: "st", img: img3 },
+  { name: "Designer", username: "des", img: img4 },
 ];
