@@ -1,9 +1,12 @@
 import  express  from "express";
-import { getUser, updateUser } from "../controllers/UserControllers.js";
+import { deleteUser, followUser, getUser, unfollowUser, updateUser } from "../controllers/UserControllers.js";
 
 const router = express.Router();
 
 router.get('/:id',getUser);
 router.put('/:id',updateUser);
+router.delete('/:id',deleteUser) 
+router.put('/:id/follow' , followUser)
+router.put('/:id/unfollow',unfollowUser)
 
 export default router;
