@@ -5,14 +5,21 @@ import Logo from "../../img/logox.png";
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
 
+  const [data, setData] = useState({
+    firstname: "",
+    lastname: "",
+    password: "",
+    confirmpass: "",
+    username: "",
+  });
 
-  const [data, setData] = useState({firstname : "" , lastname : "" , password : "" , confirmpass : "" , username:""}); 
+  
 
+  const handleChange = (e) => {
 
-    const handlechange = ()=>{
-        
-    }
+    setData({ ...data, [e.target.name]: e.target.value });
 
+  };
 
   return (
     <div className="Auth">
@@ -40,6 +47,7 @@ const Auth = () => {
                 placeholder="First Name"
                 className="infoInput"
                 name="firstname"
+                onChange={handleChange}
               />
               <input
                 required
@@ -47,6 +55,7 @@ const Auth = () => {
                 placeholder="Last Name"
                 className="infoInput"
                 name="lastname"
+                onChange={handleChange}
               />
             </div>
           )}
@@ -58,6 +67,7 @@ const Auth = () => {
               placeholder="Username"
               className="infoInput"
               name="username"
+              onChange={handleChange}
             />
           </div>
           <div>
@@ -67,6 +77,7 @@ const Auth = () => {
               className="infoInput"
               placeholder="Password"
               name="password"
+              onChange={handleChange}
             />
             {isSignUp && (
               <input
@@ -75,6 +86,7 @@ const Auth = () => {
                 className="infoInput"
                 name="confirmpass"
                 placeholder="Confirm Password"
+                onChange={handleChange}
               />
             )}
           </div>
