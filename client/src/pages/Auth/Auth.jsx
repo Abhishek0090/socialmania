@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Auth.css";
 import Logo from "../../img/logox.png";
 
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 const Auth = () => {
 
@@ -18,7 +18,7 @@ const Auth = () => {
 
 
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [data, setData] = useState(initialState);
 
