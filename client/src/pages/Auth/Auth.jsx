@@ -1,53 +1,41 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import Logo from "../../img/logox.png";
-import { signUp } from "../../api/AuthRequests";
-import { logIn } from "../../redux/actions/AuthActions";
+import { logIn, signUp } from "../../redux/actions/AuthActions.js";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 
 const Auth = () => {
-
-  const dispatch = useDispatch();
-
   const initialState = {
     firstname: "",
     lastname: "",
     username: "",
     password: "",
-    confirmPass: "",
+    confirmpass: "",
   };
 
+  const dispatch = useDispatch();
+
   const [isSignUp, setIsSignUp] = useState(false);
-
-
-
-  // const dispatch = useDispatch();
 
   const [data, setData] = useState(initialState);
 
   const [confirmPass, setConfirmPass] = useState(true);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (isSignUp) {
-      if (isSignUp) {
-        data.password === data.confirmPass
-          ? dispatch(signUp(data))
-          : setConfirmPass(false);
-      } else {
-        dispatch(logIn(data));
-      }
+      data.password === data.confirmpass
+        ? dispatch(signUp(data))
+        : setConfirmPass(false);
+    } else {
+      dispatch(logIn(data));
     }
-  }
-
+  };
 
   const handleChange = (e) => {
-
     setData({ ...data, [e.target.name]: e.target.value });
-
   };
 
   //RESET FORM
@@ -61,7 +49,7 @@ const Auth = () => {
       {/* left side */}
 
       <div className="a-left">
-        <img src={Logo} alt="" style={{ width: "100px" }} />
+        <img src={Logo} alt="" style={{ width: "180px", height: "120px" }} />
 
         <div className="Webname">
           <h1>Social Mania</h1>
@@ -123,10 +111,9 @@ const Auth = () => {
                 required
                 type="password"
                 className="infoInput"
-                name="confirmPass"
+                name="confirmpass"
                 placeholder="Confirm Password"
                 onChange={handleChange}
-                value={data.confirmPass}
               />
             )}
           </div>
