@@ -11,7 +11,7 @@ const Auth = () => {
     lastname: "",
     username: "",
     password: "",
-    confirmpass: "",
+    confirmPass: "",
   };
 
   const [isSignUp, setIsSignUp] = useState(false);
@@ -29,8 +29,12 @@ const Auth = () => {
     e.preventDefault();
 
     if (isSignUp) {
-      if (data.password !== data.confirmPass) {
-        setConfirmPass(false);
+      if (isSignUp) {
+        data.password === data.confirmpass
+          ? dispatch(signUp(data, navigate))
+          : setConfirmPass(false);
+      } else {
+        dispatch(logIn(data, navigate));
       }
     }
   }
