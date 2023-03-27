@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import Logo from "../../img/logox.png";
+import { signUp } from "../../api/AuthRequests";
+import { logIn } from "../../redux/actions/AuthActions";
 
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Auth = () => {
+
+  const dispatch = useDispatch();
 
   const initialState = {
     firstname: "",
@@ -30,11 +34,11 @@ const Auth = () => {
 
     if (isSignUp) {
       if (isSignUp) {
-        data.password === data.confirmpass
-          ? dispatch(signUp(data, navigate))
+        data.password === data.confirmPass
+          ? dispatch(signUp(data))
           : setConfirmPass(false);
       } else {
-        dispatch(logIn(data, navigate));
+        dispatch(logIn(data));
       }
     }
   }
@@ -119,9 +123,10 @@ const Auth = () => {
                 required
                 type="password"
                 className="infoInput"
-                name="confirmpass"
+                name="confirmPass"
                 placeholder="Confirm Password"
                 onChange={handleChange}
+                value={data.confirmPass}
               />
             )}
           </div>

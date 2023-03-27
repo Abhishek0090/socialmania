@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import AuthRoute from "./routes/AuthRoute.js";
 import UserRoute from "./routes/UserRoute.js";
 import PostRoute from "./routes/PostRoute.js";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -22,6 +23,10 @@ const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true })); //for accepting json format
 
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
+
+app.use(cors()); //for accepting url hits
+
 
 mongoose
   .connect(
