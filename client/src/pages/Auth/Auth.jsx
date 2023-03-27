@@ -3,7 +3,9 @@ import "./Auth.css";
 import Logo from "../../img/logox.png";
 import { logIn, signUp } from "../../redux/actions/AuthActions.js";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import Loading from '../../loading/Loading';
 
 const Auth = () => {
   const initialState = {
@@ -15,6 +17,11 @@ const Auth = () => {
   };
 
   const dispatch = useDispatch();
+
+  const loading = useSelector((state) => state.AuthReducer.loading);
+
+
+  
 
   const [isSignUp, setIsSignUp] = useState(false);
 
@@ -145,8 +152,8 @@ const Auth = () => {
                 ? "Already have an account Login"
                 : "Don't have an account Sign up"}
             </span>
-            <button className="button infoButton" type="Submit">
-              {isSignUp ? "SignUp" : "Login"}
+            <button className="button infoButton" type="Submit" disabled={loading}>
+              {loading ? "Loading..." :  isSignUp ? "SignUp" : "Login"}
             </button>
           </div>
         </form>
