@@ -1,5 +1,6 @@
 import UserModel from "../models/UserModel.js";
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken';
 
 //Register
 export const registerUser = async (req, res) => {
@@ -18,11 +19,16 @@ export const registerUser = async (req, res) => {
     if (oldUser) {
       return res.status(400).json("User Already Exists");
     }
-
     const user = await newUser.save();
-    res.status(200).json(user);
+
+
+    const token = jwt.sign({
+      username: user.username, id: user._id
+    }, process.env.JWT_SECRET, { expiresIn: '1h' })
+
+    res.status(200).json({ user, token });
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -37,15 +43,21 @@ export const login = async (req, res) => {
     if (user) {
       const validity = await bcrypt.compare(password, user.password);
 
+      const token = jwt.sign({
+        username: user.username, id: user._id
+      },
+        process.env.JWT_SECRET, { expiresIn: '1h' });
+
+
       if (!validity) {
         res.status(400).json("wrong password");
       } else {
-        res.status(201).json(user);
+        res.status(201).json({ user, token });
       }
     } else {
       res.status(404).json("User Doesnt Exist");
     }
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: error.message });
   }
 };
