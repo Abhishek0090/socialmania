@@ -7,7 +7,7 @@ import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
 import { useDispatch, useSelector } from "react-redux";
-import { UploadImage } from "../../redux/actions/UploadActions";
+import { UploadImage, UploadPost } from "../../redux/actions/UploadActions";
 
 const PostShare = () => {
 
@@ -20,6 +20,7 @@ const PostShare = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.AuthReducer.authData);
+  const { loading } = useSelector((state) => state.PostReducer.posts);
 
   console.log(user)
 
@@ -33,9 +34,7 @@ const PostShare = () => {
   const handleUpload = (e) => {
 
     e.preventDefault();
- 
-
-
+  
     const newPost = {
       userId: user._id,
       desc: desc.current.value
@@ -57,8 +56,15 @@ const PostShare = () => {
         console.log(err);
       }
     }
-
+    dispatch(UploadPost(newPost));
+    resetShare();
   }
+
+  // Reset Post Share
+  const resetShare = () => {
+    setImage(null);
+    desc.current.value = "";
+  };
 
   return (
     <div className="PostShare">
@@ -85,8 +91,8 @@ const PostShare = () => {
             <UilSchedule />
             Schedule
           </div>
-          <button className="button ps-button" onClick={handleUpload}>
-            Share
+          <button className="button ps-button" onClick={handleUpload} disabled={loading}>
+            {loading ? "uploading..." : "Share"}
           </button>
           <div style={{ display: "none" }}>
             <input type="file" name="myImage" ref={imageRef} onChange={onImageChange} />
