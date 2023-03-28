@@ -18,7 +18,7 @@ const PostShare = () => {
   const desc = useRef();
 
   const dispatch = useDispatch();
- 
+
   const { user } = useSelector((state) => state.AuthReducer.authData);
 
   const onImageChange = (e) => {
@@ -52,7 +52,6 @@ const PostShare = () => {
       } catch (err) {
         console.log(err);
       }
-
     }
 
   }
