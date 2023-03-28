@@ -21,6 +21,8 @@ const PostShare = () => {
 
   const { user } = useSelector((state) => state.AuthReducer.authData);
 
+  console.log(user)
+
   const onImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       let img = e.target.files[0];
@@ -31,6 +33,8 @@ const PostShare = () => {
   const handleUpload = (e) => {
 
     e.preventDefault();
+ 
+
 
     const newPost = {
       userId: user._id,
