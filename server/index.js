@@ -25,8 +25,19 @@ app.use(bodyParser.json({ limit: "30mb", extended: true })); //for accepting jso
 
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
+const corsOpts = {
+  origin: '*',
 
-app.use(cors()); //for accepting url hits
+  methods: [
+    'GET',
+    'POST',
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
+app.use(cors(corsOpts)); //for accepting url hits
 
 
 mongoose
