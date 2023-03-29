@@ -15,10 +15,12 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
     const dispatch = useDispatch();
     const param = useParams();
 
- 
+
     const { user } = useSelector((state) => state.AuthReducer.authData);
 
-
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
 
     return (
         <Modal
@@ -41,12 +43,17 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
                         placeholder="First Name"
                         name="firstname"
                         className="infoInput"
+                        onChange={handleChange}
+                        value={formData.firstname}
                     />
                     <input
                         type="text"
                         placeholder="Last Name"
                         name="lastname"
                         className="infoInput"
+                        onChange={handleChange}
+                        value={formData.lastname}
+
                     />
                 </div>
 
@@ -56,6 +63,9 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
                         placeholder="Works at"
                         name="worksAt"
                         className="infoInput"
+                        onChange={handleChange}
+                        value={formData.worksAt}
+
                     />
                 </div>
 
@@ -65,12 +75,18 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
                         placeholder="Lives in"
                         name="livesIn"
                         className="infoInput"
+                        onChange={handleChange}
+                        value={formData.livesIn}
+
                     />
                     <input
                         type="text"
                         placeholder="Country"
                         name="country"
                         className="infoInput"
+                        onChange={handleChange}
+                        value={formData.country}
+
                     />
                 </div>
 
@@ -80,6 +96,9 @@ const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
                         className="infoInput"
                         placeholder="Relationship status"
                         name="relationship"
+                        onChange={handleChange}
+                        value={formData.relationship}
+
                     />
                 </div>
 
