@@ -37,7 +37,7 @@ const corsOpts = {
     'Content-Type',
   ],
 };
-app.use(cors(corsOpts)); //for accepting url hits
+app.use(cors()); //for accepting url hits
 
 
 mongoose
