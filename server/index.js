@@ -45,11 +45,17 @@ mongoose
     console.log(error);
   });
 
+
+// to serve images inside public folder
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
+
+
+
 //routes
 
 app.use("/auth", AuthRoute);
-app.use("/user",UserRoute);
-app.use("/post",PostRoute);
-app.use("/upload",UploadRoute);
+app.use("/user", UserRoute);
+app.use("/post", PostRoute);
+app.use("/upload", UploadRoute);
 
- 

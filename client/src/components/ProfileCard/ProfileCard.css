@@ -84,14 +84,10 @@
   border-left: 2px solid var(--hrColor);
 }
 
-
-
-
-.ProfileCard>span
-{
-    font-weight: bold;
-    color: rgba(0, 0, 255, 0.616);
-    align-self: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
+.ProfileCard > span {
+  font-weight: bold;
+  color: rgba(194, 29, 216, 0.801);
+  align-self: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
