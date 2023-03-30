@@ -9,17 +9,20 @@ import { getTimelinePosts } from '../../redux/actions/PostActions';
 
 const Posts = () => {
 
-    // const params = useParams()
+    const params = useParams()
  
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.AuthReducer.authData);
 
-    const { posts, loading } = useSelector((state) => state.PostReducer);
+    let { posts, loading } = useSelector((state) => state.PostReducer);
 
     useEffect(() => {
          dispatch(getTimelinePosts(user._id));
     }, []);
+
+    if(!posts) return 'No Posts';
+    if(params.id) posts = posts.filter((post)=> post.userId===params.id)
 
 
     return (

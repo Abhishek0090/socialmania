@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-/* .UnfollowButton{
+.UnfollowButton{
     color: var(--blue);
     border: 2px solid var(--blue);
     cursor: pointer;
@@ -58,4 +58,4 @@
     color: blue;
     align-self: center;
     cursor: pointer;
-}   */
+}  
