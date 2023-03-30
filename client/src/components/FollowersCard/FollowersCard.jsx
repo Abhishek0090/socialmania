@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './FollowersCard.css';
 import { Followers } from '../../Data/FollowersData';
+import User from '../User/User';
 
 const FollowersCard = () => {
+
+    const [persons, setPersons] = useState([]);
+
+    const { user } = ((state) => state.AuthReducer.authData);
+
+    useEffect(() => {
+        const fetchPersons = async () => {
+            const { data } = await getAllUser();
+        }
+
+        fetchPersons();
+        
+    }, []);
     return (
         <div className='FollowersCard'>
 
-            <h3>Who is Following You</h3>
+            <h3>People you may Know</h3>
 
+            {Followers?.map((person, id) => (
 
-            {
-                Followers?.map((follower, id) => (
-                    <div className='follower'>
+                <User person={person} key={id} />
 
-                        <div>
-                            <img src={follower.img} alt='' className='followerImage' />
-
-
-                            <div className='name'>
-                                <span>{follower.name}</span>
-                                <span>{follower.username}</span>
-                            </div>
-                        </div>
-
-                        <button className='button fc-button'>
-                            Follow
-                        </button>
-                    </div>
-
-
-                ))
+            ))
             }
         </div>
     )
