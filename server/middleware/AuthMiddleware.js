@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
 dotenv.config();
-const secret = process.env.JWTKEY;
+const secret = process.env.JWT_SECRET;
 const AuthMiddleWare = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
