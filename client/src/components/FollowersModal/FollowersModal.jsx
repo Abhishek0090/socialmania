@@ -1,9 +1,27 @@
-import React from 'react'
 
-const FollowersModal = () => {
+import React from "react";
+import { Modal, useMantineTheme } from "@mantine/core";
+import FollowersCard from "../FollowersCard/FollowersCard";
+
+const FollowersModal = ({ modalOpened, setModalOpened }) => {
+  const theme = useMantineTheme();
   return (
-    <div>FollowersModal</div>
-  )
-}
+    <Modal
+      overlaycolor={
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[9]
+          : theme.colors.gray[2]
+      }
+      overlayopacity={0.55}
+      overlayblur={3}
+      size="55%"
+      opened={modalOpened}
+      onClose={() => setModalOpened(false)}
+    >
 
-export default FollowersModal
+      <FollowersCard location='modal' />
+    </Modal>
+  );
+};
+
+export default FollowersModal;

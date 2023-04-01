@@ -4,8 +4,12 @@ import { Followers } from "../../Data/FollowersData";
 import User from "../User/User";
 import { getAllUser } from "../../api/UserRequests";
 import { useSelector } from "react-redux";
+import FollowersModal from "../FollowersModal/FollowersModal";
 
-const FollowersCard = () => {
+const FollowersCard = ({ location }) => {
+
+  const [modalOpened, setModalOpened] = useState(false);
+  
   const [persons, setPersons] = useState([]);
 
   const { user } = useSelector((state) => state.AuthReducer.authData);
@@ -25,6 +29,17 @@ const FollowersCard = () => {
       {persons.map((person, id) => {
         if (person._id !== user._id) return <User person={person} key={id} />;
       })}
+
+      {!location ? (
+        <span onClick={() => setModalOpened(true)}>Show more</span>
+      ) : (
+        ""
+      )}
+
+      <FollowersModal
+        modalOpened={modalOpened}
+        setModalOpened={setModalOpened}
+      />
     </div>
   );
 };
