@@ -48,7 +48,7 @@ const PostShare = () => {
       data.append("file", image);
       newPost.image = fileName
 
-      console.log(newPost);
+      // console.log(newPost);
 
       try {
         dispatch(UploadImage(data));
